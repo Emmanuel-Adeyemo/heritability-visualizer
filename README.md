@@ -18,4 +18,4 @@ pip install -r requirements.txt
 streamlit run app.py             # Parent-Offspring Regression
 ```
 
-### App deployed on Streamlit: [aub.ie/h2](https://aub.ie/h2)
+### App deployed on Streamlit: [aub.ie/heritability](https://aub.ie/heritability)
