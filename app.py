@@ -17,7 +17,6 @@ PRESETS = {
 }
 
 st.title('Parent-Offspring Regression Simulator')
-st.latex(r'\text{offspring phenotype} = a + h^2 \times \text{midparent phenotype} + \text{noise}')
 
 for key, default in [
     ('VA_slider', 10.0),
@@ -83,7 +82,7 @@ with col_metric:
     st.metric('VP = VA + VE', f'{VP:.1f}')
     st.metric('h² = VA / VP', f'{true_h2:.3f}')
     st.caption('This is the true heritability of the simulated population. '
-               'Watch for this exact number to reappear as the regression slope in Panel B.')
+               'We will reuse in Panel B.')
 
 st.divider()
 
@@ -98,8 +97,8 @@ with col_b2:
     offspring_k = st.slider('Offspring per family (averaged)', min_value=1, max_value=10,
                              step=1, key='offspring_k_slider',
                              help="Averaging more offspring per family reduces scatter from "
-                                  "Mendelian sampling and environmental noise -- it does NOT "
-                                  "change the true h², only how precisely you can see it.")
+                                  "environmental noise -- it does NOT "
+                                  "change the true h², only how precisely it appears.")
 
 if 'sim_seed' not in st.session_state:
     st.session_state.sim_seed = 785
@@ -149,9 +148,6 @@ m3.metric('R² of fit', f"{(fit['r_value']**2):.3f}")
 
 gap = fit['slope'] - true_h2
 st.caption(
-    f"The fitted slope differs from the true h² by {gap:+.3f} in this particular sample of "
-    f"{n_families} families. Click 'Resimulate' to draw a new random sample at the same settings "
-    "and watch the fitted line jitter around the true (green dashed) line -- this is sampling "
-    "noise, not model error. Smaller family counts and fewer offspring per family produce more "
+    f"Smaller family counts and fewer offspring per family produce more "
     "jitter; increasing either tightens the estimate toward the true value."
 )
