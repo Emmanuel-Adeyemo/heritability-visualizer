@@ -10,10 +10,10 @@ st.set_page_config(page_title='Parent-Offspring Regression Simulator', layout='w
 
 PRESETS = {
     '-- choose a preset --': None,
-    'High h2, tight scatter': {'VA': 20.0, 'VE': 5.0, 'n_families': 200, 'offspring_per_family': 1},
-    'Low h2, loose scatter': {'VA': 5.0, 'VE': 20.0, 'n_families': 200, 'offspring_per_family': 1},
+    'High h2, tight scatter': {'VA': 20.0, 'VE': 5.0, 'n_families': 500, 'offspring_per_family': 1},
+    'Low h2, loose scatter': {'VA': 5.0, 'VE': 20.0, 'n_families': 500, 'offspring_per_family': 1},
     'Small sample, high noise': {'VA': 10.0, 'VE': 15.0, 'n_families': 15, 'offspring_per_family': 1},
-    'Averaging tightens the fit': {'VA': 10.0, 'VE': 15.0, 'n_families': 200, 'offspring_per_family': 8},
+    'Averaging tightens the fit': {'VA': 10.0, 'VE': 15.0, 'n_families': 500, 'offspring_per_family': 40},
 }
 
 st.title('Parent-Offspring Regression Simulator')
@@ -91,10 +91,10 @@ st.header('Panel B: Parent-offspring regression')
 
 col_b1, col_b2 = st.columns(2)
 with col_b1:
-    n_families = st.slider('Number of families (parent pairs)', min_value=5, max_value=500,
+    n_families = st.slider('Number of families (parent pairs)', min_value=5, max_value=2000,
                             step=5, key='n_families_slider')
 with col_b2:
-    offspring_k = st.slider('Offspring per family (averaged)', min_value=1, max_value=10,
+    offspring_k = st.slider('Offspring per family (averaged)', min_value=1, max_value=50,
                              step=1, key='offspring_k_slider',
                              help="Averaging more offspring per family reduces scatter from "
                                   "environmental noise -- it does NOT "
